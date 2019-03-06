@@ -18,6 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "standard": "standard",
+    "standard::fix": "standard --fix",
     "postinstall": "react-scripts build"
   },
   "engines": {
@@ -26,5 +28,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "standardjs": "^1.0.0-alpha"
   }
 }
