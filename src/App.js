@@ -12,7 +12,7 @@ class App extends Component {
         <main className="container">
           <Switch>
             <Route path="/players/:id" component={PlayerForm}/>
-            <Route path="/players" component={Players}/>
+            <Route path="/players" exact component={Players}/>
             <Route path="/not-found" component={NotFound}/>
             <Redirect from="/" exact to="/players"/>
             <Redirect to="/not-found"/>
