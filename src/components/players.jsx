@@ -13,7 +13,7 @@ class Players extends Component {
     currentPage: 1,
     pageSize: 4,
     searchQuery: '',
-    sortColumn: { path: ['score','lastName'], order: ['desc','asc'] }
+    sortColumn: { path: ['score', 'lastName'], order: ['desc', 'asc'] }
   }
 
   componentDidMount () {
@@ -58,16 +58,16 @@ class Players extends Component {
 
     const players = paginate(sorted, currentPage, pageSize)
 
-    return { totalCount: filtered.length, data: players }
+    return { playerPerPageCount: players.length, data: players }
   }
 
   render () {
-    const { length: count } = this.state.players
+    const { length: totalCount } = this.state.players
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state
 
-    if (count === 0) return <p>There are no players in the database.</p>
+    if (totalCount === 0) return <p>There are no players in the database.</p>
 
-    const { totalCount, data: players } = this.getPagedData()
+    const { playerPerPageCount, data: players } = this.getPagedData()
 
     return (
       <div className="row">
@@ -79,7 +79,7 @@ class Players extends Component {
           >
             New Player
           </Link>
-          <p>Showing {totalCount} players in the database.</p>
+          <p>Showing {playerPerPageCount} of {totalCount} players</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch}/>
           <PlayersTable
             players={players}
